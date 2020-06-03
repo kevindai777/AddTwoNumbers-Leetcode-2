@@ -6,15 +6,11 @@ class Node {
       this.data = data
       this.next = next
     }
-  }
+}
   
 class LinkedList {
     constructor() {
       this.head = null
-    }
-  
-    addNoteToFront(data) {
-      this.head = new Node(data, this.head) //the new node's 'next' will be the given 'this.head' a.k.a you're shifting the old node over
     }
 
     addNodeToBack(data) {
@@ -31,17 +27,13 @@ class LinkedList {
     }
 }
 
-let l1 = new LinkedList()
+let l1 = new Node(2)
+l1.next = new Node(4)
+l1.next.next = new Node(3)
 
-l1.addNodeToBack(4)
-l1.addNodeToBack(5)
-l1.addNodeToBack(6)
-
-let l2 = new LinkedList()
-
-l2.addNodeToBack(7)
-l2.addNodeToBack(8)
-l2.addNodeToBack(9)
+let l2 = new Node(5)
+l2.next = new Node(6)
+l2.next.next = new Node(4)
 
 
 //O(n) solution since you're traversing each list once
@@ -50,8 +42,8 @@ let sumHead, sumTail
 let carry = 0
     
 while (l1 !== null || l2 !== null) {
-    let a = l1 && l1.val 
-    let b = l2 && l2.val 
+    let a = l1 && l1.data
+    let b = l2 && l2.data 
         
     let sum = a + b + carry
     carry = Math.floor(sum / 10)
