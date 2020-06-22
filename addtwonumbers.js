@@ -1,9 +1,9 @@
 //Objective is to add two linked lists together, from front to back
-//For example, (2->4->3) + (5->6->4) = (8->0->7)
+//For example, (2->4->3) + (5->6->4) = (7->0->8)
 
 class Node {
-    constructor(data, next = null) { //if next is not given, assume it is empty
-      this.data = data
+    constructor(val, next = null) { //if next is not given, assume it is empty
+      this.val = val
       this.next = next
     }
 }
@@ -36,15 +36,18 @@ l2.next = new Node(6)
 l2.next.next = new Node(4)
 
 
-//O(n) solution since you're traversing each list once
+//O(n) solution since you're traversing over each list
 
 let sumHead, sumTail
 let carry = 0
     
 while (l1 !== null || l2 !== null) {
-    let a = l1 && l1.data
-    let b = l2 && l2.data 
+    //check if the nodes have values and are not null
+    let a = l1 && l1.val
+    let b = l2 && l2.val 
         
+    //Here, we use the sum to update the carry (if it goes over 10)
+    //as well as to make our new node, which is mod 10 of the sum
     let sum = a + b + carry
     carry = Math.floor(sum / 10)
     let newNode = new Node(sum % 10)
@@ -67,7 +70,8 @@ while (l1 !== null || l2 !== null) {
         l2 = l2.next
     }
 }
-    
+
+//If there's a leftover carry by the last node, make it its own node
 if (carry > 0) {
     sumTail.next = new Node(carry)
 }
