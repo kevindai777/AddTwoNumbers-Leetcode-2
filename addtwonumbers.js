@@ -36,7 +36,8 @@ l2.next = new Node(6)
 l2.next.next = new Node(4)
 
 
-//O(n) solution since you're traversing over each list
+//O(n + m) solution where n and m are the lengths of each list respectively
+//We simply traverse over both lists and add accordingly
 
 let sumHead, sumTail
 let carry = 0
